@@ -1,0 +1,175 @@
+/* Navbar general styling */
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    height: 5rem;             /* compact height */
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0; /* subtle border */
+}
+
+/* Brand styling */
+.navbar-brand {
+    color: #ff385c;           /* Airbnb pink */
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: #e03150;
+}
+
+/* Font Awesome icon */
+.navbar-brand i {
+    font-size: 1.8rem;
+    color: #ff385c;
+    margin-right: 0.5rem;
+}
+
+/* Nav links */
+.navbar-nav .nav-link {
+    color: #222;
+    font-weight: 500;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff385c;
+}
+
+/* Add Listing button */
+.navbar-nav .btn-outline-primary {
+    border-color: #ff385c;
+    color: #ff385c;
+    font-weight: 500;
+    padding: 0.3rem 0.9rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .btn-outline-primary:hover {
+    background-color: #ff385c;
+    color: #fff;
+    border-color: #ff385c;
+}
+
+/* Responsive tweaks for Navbar */
+@media (max-width: 991px) {
+    .navbar-nav {
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+    .navbar-nav .nav-link {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    .navbar-nav .btn-outline-primary {
+        display: block;
+        margin: 0.5rem auto;
+    }
+}
+
+/* Footer styling */
+footer {
+    background: #f7f7f7;
+    border-top: 0px solid #e0e0e0;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.f-info {
+    display: flex;
+    flex-wrap: wrap;               /* responsive */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: auto;
+    gap: 0.5rem;
+    text-align: center;
+}
+.f-info-socials {
+    font-size: 1.5rem;
+}
+
+.f-info a {
+    margin: 0 0.5rem;
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.f-info a:hover {
+    color: #ff385c;   /* Airbnb pink */
+}
+
+ /* Responsive tweaks for Footer  */
+@media (max-width: 768px) {
+    .f-info {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+}
+/* Card hover effect */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-body{
+    padding: 1rem !important;
+}
+
+.card:hover {
+    transform: scale(1.03);        /* Slight zoom on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+/* Card image rounded top corners */
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+/* Card title styling */
+.card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Price styling */
+.card-text.mb-1 {
+    font-weight: 500;
+    color: #ff385c;  /* Airbnb pink */
+}
+
+/* Location text styling */
+.card-text.text-muted {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Responsive tweak: smaller padding on mobile */
+@media (max-width: 576px) {
+    .card-body {
+        padding: 0.8rem;
+    }
+}
+
+.add-btn{
+   background-color:  #ff385c !important; 
+   border: none !important;
+}
+.edit-btn{
+    background-color:  #ff385c !important; 
+    border: none !important;
+}
+.show-img {
+  max-height: 270px;   /* ya 350px bhi kar sakte ho */
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+

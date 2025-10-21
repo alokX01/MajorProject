@@ -1,0 +1,101 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container my-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h3 class="mb-4 text-center"><%= listing.title %></h3>
+
+      <!-- Card -->
+      <div class="card mb-4">
+        <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
+        <div class="card-body">
+          <p><i>owned by - <%= listing.owner.username %></i></p>
+          <p class="card-text"><%= listing.description %></p>
+          <p class="card-text fw-bold">&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
+          <p class="card-text text-muted"><%= listing.location %>, <%= listing.country %></p>
+        </div>
+      </div>
+
+      <!-- Owner-only actions -->
+      <% if (currUser && currUser._id.toString() === listing.owner._id.toString()) { %>
+        <div class="d-flex justify-content-between">
+          <a href="/listings/<%= listing._id %>/edit" class="btn btn-warning">Edit</a>
+          <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+            <button class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      <% } %>
+
+      <div class="col-md-10 offset-md-1">
+        <hr />
+        <h4>Leave a Review</h4>
+
+        <% if (currUser) { %>
+          <!-- Only logged-in users can review -->
+          <form action="/listings/<%= listing._id %>/reviews" method="post" novalidate class="needs-validation">
+
+            <!-- Star rating only -->
+            <fieldset class="starability-slot">
+              <legend>Rating:</legend>
+              <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+              <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+            
+            <div class="mt-2">
+              <label for="comment">Comments</label>
+              <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+              <div class="invalid-feedback">Please add some comments for review</div>
+            </div>
+            <br />
+            <button class="btn btn-dark">Submit</button>
+          </form>
+        <% } else { %>
+          <p class="text-muted">
+            Please <a href="/login">login</a> or <a href="/signup">signup</a> to leave a review.
+          </p>
+        <% } %>
+
+        <hr />
+        <p class="fw-bold fs-5 mt-4 mb-3 border-bottom pb-2">All Reviews</p>
+
+        <div class="row g-3">
+          <% for (review of listing.reviews) { %>
+            <div class="col-md-6 col-sm-8">
+              <div class="card shadow-sm border-0 h-100 position-relative">
+                <div class="card-body">
+                  <h6 class="card-title text-primary fw-semibold mb-2">
+                    <%= review.author.username %>
+                  </h6>
+                  <p class="starability-result" data-rating="<%= review.rating %>"></p>
+                  <p class="card-text text-muted mb-1"><%= review.comment %></p>
+                  <span class="badge bg-warning text-dark">
+                    <%= review.rating %> ★
+                  </span>
+                </div>
+
+                <% if (currUser && currUser._id.toString() === review.author._id.toString()) { %>
+                  <!-- Only review author can delete -->
+                  <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                        class="position-absolute top-0 end-0 m-2">
+                    <button class="btn btn-sm btn-outline-danger" title="Delete Review">
+                      <i class="bi bi-trash text-center">X</i>
+                    </button>
+                  </form>
+                <% } %>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
