@@ -173,3 +173,98 @@ footer {
   border-radius: 0.5rem;
 }
 
+/* Responsive tweaks for phones (max-width: 576px) */
+@media (max-width: 576px) {
+
+  /* Navbar adjustments */
+  .navbar {
+    flex-wrap: wrap;              /* allow items to wrap */
+    height: auto;                 /* let height adjust */
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar-nav {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column !important; /* stack nav links vertically */
+    margin-top: 0.5rem !important;
+    text-align: center;
+  }
+
+  .navbar-nav .nav-link {
+    margin: 0.3rem 0 !important;
+    padding: 0.5rem 0;
+    width: 100%;
+  }
+
+  .navbar-nav .btn-outline-primary {
+    width: 100%;
+    margin: 0.5rem auto !important;
+  }
+
+  /* Card tweaks */
+  .card-body {
+    padding: 0.8rem !important;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-text.mb-1 {
+    font-size: 0.95rem;
+  }
+
+  /* Footer tweaks */
+  .f-info {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    text-align: center;
+  }
+}
+/* Responsive for login and signup forms on small screens */
+@media (max-width: 576px) {
+
+  /* Login form container */
+  .row.mt-3 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  .col-6.offset-3 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Center the login header */
+  .col-6.offset-3 h1.text-center {
+    font-size: 1.5rem;
+  }
+
+  /* Signup form container */
+  .row.mt-5.justify-content-center {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .col-md-6.col-lg-5 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 1rem;
+  }
+
+  /* Make buttons full width for better tap targets */
+  button.btn.btn-success.w-100,
+  button.btn.btn-success.btn-lg.rounded-3.fw-semibold {
+    width: 100%;
+  }
+}
